@@ -62,6 +62,7 @@ jobs:
         if: success()
         uses: actions/upload-pages-artifact@v4
         with:
+          name: github-pages
           path: gh_pages
 
       - name: Deploy to GitHub Pages
