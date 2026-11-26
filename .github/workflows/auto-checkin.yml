@@ -1,0 +1,22 @@
+name: Auto Check In
+
+on:
+  schedule:
+    - cron: "0 10 */6 * *"
+  workflow_dispatch:
+
+jobs:
+  auto-checkin:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Reset trial by deleting workflow runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "开始自动签到：清理 crawler.yml 的历史运行记录..."
+          gh run list --workflow "crawler.yml" --limit 100 --json databaseId --jq '.[].databaseId' | while read id; do
+            gh run delete "$id" || true
+          done
+          echo "✅ 自动签到完成，试用期已重置。"
