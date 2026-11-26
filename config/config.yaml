@@ -140,6 +140,26 @@ rss:
     - id: "yahoo-finance"
       name: "雅虎财经"
       url: "https://finance.yahoo.com/news/rssindex"
+      
+    - id: "bbc-world"
+      name: "BBC国际"
+      url: "https://feeds.bbci.co.uk/news/world/rss.xml"
+    
+    - id: "reuters-world"
+      name: "路透社国际"
+      url: "https://news.google.com/rss/search?q=when:24h+site:reuters.com/world&ceid=US:en&hl=en-US&gl=US"
+
+    - id: "xinhua"
+      name: "新华网"
+      url: "https://rsshub.app/news/whxw"
+
+    - id: "36kr"
+      name: "36氪"
+      url: "https://36kr.com/feed"
+
+    - id: "caixin"
+      name: "财新网"
+      url: "https://rsshub.app/caixin/latest"
 
     # 自定义源示例
     # - id: "custom-feed"
@@ -472,7 +492,7 @@ ai_analysis:
   max_news_for_analysis: 150        # 参与分析的新闻数量上限（控制 token 成本的关键项）
                                     # 热榜优先占用配额，RSS 用剩余配额，独立展示区不受此限制
 
-  include_rss: false                # 是否包含 RSS 内容进行分析（true=包含, false=不包含）
+  include_rss: true                # 是否包含 RSS 内容进行分析（true=包含, false=不包含）
   include_web_search: true          # 是否把联网搜索结果（含摘要）一起给 AI 分析（true=包含, false=不包含）
   search_summary_max_chars: 300     # 每条联网搜索结果最多发给 AI 多少字的摘要（控制 AI 费用）
   include_standalone: true          # 是否纳入独立展示区数据（true=纳入, false=不纳入）
