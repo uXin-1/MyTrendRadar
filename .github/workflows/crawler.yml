@@ -42,6 +42,8 @@ jobs:
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
           AI_MODEL: ${{ secrets.AI_MODEL }}
           AI_API_BASE: ${{ secrets.AI_API_BASE }}
+          WEWORK_WEBHOOK_URL: ${{ secrets.WEWORK_WEBHOOK_URL }}
+          WEWORK_MSG_TYPE: ${{ secrets.WEWORK_MSG_TYPE }}
           GITHUB_ACTIONS: true
         run: uv run python -m trendradar
 
@@ -65,6 +67,9 @@ jobs:
           name: github-pages
           path: gh_pages
 
+  deploy:
+    needs: crawl
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
-        if: success()
         uses: actions/deploy-pages@v4
